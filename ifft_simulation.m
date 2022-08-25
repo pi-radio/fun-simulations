@@ -1,0 +1,10 @@
+nFFT = 1024;
+tx_fd = ones(nFFT, 1) * (-1-1j);
+tx_td = ifft(tx_fd);
+figure(1); clf;
+subplot(2,1,1);
+plot(real(tx_td), 'r');
+xlim([-100 1100]); ylim([-2 2]);
+subplot(2,1,2);
+plot(imag(tx_td), 'b');
+xlim([-100 1100]); ylim([-2 2]);

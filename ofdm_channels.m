@@ -24,23 +24,23 @@ clear tx_td_app;
 rx_td = tx_td;
 
 % B: Timing Offset. Comment this out for no timing offset.
-k = 2;
-n = size(rx_td, 1);
-rx_td = [rx_td(k+1:n); rx_td(1:k)];
-clear n k;
+% k = 2;
+% n = size(rx_td, 1);
+% rx_td = [rx_td(k+1:n); rx_td(1:k)];
+% clear n k;
 
 % C: Residual Frequency Offset. Comment this out for no frequency offset.
     % We assume a sampling frequency of 1 GSps complex, for a 1 GHz bandwidth.
     % The sample duration is therefore 1ns.
-fs = 20e3; % Frequency offset in Hertz
-n = 1e9 / fs; % In 'n' samples, the channel will rotate a full circle
-p = 2*pi/n; % The channel will rotate by 'p' radian every sample
-clear n;
-n = size(rx_td, 1); % Now, 'n' is the number of samples in the waveform
-phasor = exp(1j*linspace(0, p*(n-1), n));
-phasor = phasor';
-rx_td = rx_td .* phasor;
-clear fs n phasor p;
+% fs = 20e3; % Frequency offset in Hertz
+% n = 1e9 / fs; % In 'n' samples, the channel will rotate a full circle
+% p = 2*pi/n; % The channel will rotate by 'p' radian every sample
+% clear n;
+% n = size(rx_td, 1); % Now, 'n' is the number of samples in the waveform
+% phasor = exp(1j*linspace(0, p*(n-1), n));
+% phasor = phasor';
+% rx_td = rx_td .* phasor;
+% clear fs n phasor p;
 
 % D: Add Noise
 target_snr = 18; % in dB
